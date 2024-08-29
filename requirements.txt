@@ -1,0 +1,5 @@
+# YOLOv8 및 관련 라이브러리
+ultralytics==8.2.83
+
+# Flask 웹 프레임워크
+flask==2.3.3
