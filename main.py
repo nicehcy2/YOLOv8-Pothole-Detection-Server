@@ -6,22 +6,23 @@ from pothole_detection.pothole_operations import get_pothole_data, process_potho
 import os
 
 # Configuration
+base_url = 'https://api.rootcodepothole.com/'
+
 bucket_name = 'rootcode-s3bucket'
 s3_edge_folder = 'pothole/'
 input_image_dir = './input_potholes/'
 output_image_dir = './output_potholes/'
-presigned_url_api = 'http://43.202.82.198:8080/presigned-validate-url'
-file_url_registration_api = 'http://example.com/register'
+presigned_url_api = base_url + 'presigned-validate-url'
+#file_url_registration_api = base_url + 'register'
 
-pothole_data_api = 'http://example.com/pothole-data'
-post_api_url = 'http://example.com/post-image-url'
-delete_api_url = 'http://example.com/delete-image-url'
+pothole_data_api = base_url + 'images/unverified'
+post_api_url = base_url + 'potholes/second-verification'
 
 # Download files from S3
-download_s3_files(bucket_name, s3_edge_folder, input_image_dir)
+#download_s3_files(bucket_name, s3_edge_folder, input_image_dir)
 
 # Detect potholes using YOLO
-detect_pothole(input_image_dir, output_image_dir)
+#detect_pothole(input_image_dir, output_image_dir)
 
 # Process and upload detected images
 
@@ -40,20 +41,12 @@ def process_images():
 
         upload_image_to_s3(presigned_url, file_path)
 
-        # Example latitude and longitude, replace with actual values
-        latitude, longitude = 37.7749, -122.4194
-        # register_image_url(file_url, latitude, longitude,
-        #                   file_url_registration_api)
 
+#process_images()
 
-process_images()
-
-'''
 # Get pothole data and process it
 pothole_data = get_pothole_data(pothole_data_api)
-process_pothole_data(pothole_data, output_image_dir,
-                     post_api_url, delete_api_url)
-                     '''
+process_pothole_data(pothole_data, output_image_dir, post_api_url)
 
 # Cleanup
 # delete_s3_files(bucket_name, s3_edge_folder, input_image_dir)

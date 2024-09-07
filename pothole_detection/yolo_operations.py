@@ -46,7 +46,7 @@ def detect_pothole(input_image_dir, output_image_dir, model_path='bestv8m.pt'):
             image[int(height / 2):, :] = annotated_image
 
             # 결과 이미지 파일 이름 생성
-            output_image_file = f"{os.path.splitext(image_file)[0]}_detect_by_yolov8.jpg"
+            output_image_file = f"{os.path.splitext(image_file)[0]}.jpg"
             output_image_path = os.path.join(
                 output_image_dir, output_image_file)
 
