@@ -19,10 +19,10 @@ pothole_data_api = base_url + 'images/unverified'
 post_api_url = base_url + 'potholes/second-verification'
 
 # Download files from S3
-#download_s3_files(bucket_name, s3_edge_folder, input_image_dir)
+download_s3_files(bucket_name, s3_edge_folder, input_image_dir)
 
 # Detect potholes using YOLO
-#detect_pothole(input_image_dir, output_image_dir)
+detect_pothole(input_image_dir, output_image_dir)
 
 # Process and upload detected images
 
@@ -42,7 +42,7 @@ def process_images():
         upload_image_to_s3(presigned_url, file_path)
 
 
-#process_images()
+process_images()
 
 # Get pothole data and process it
 pothole_data = get_pothole_data(pothole_data_api)
