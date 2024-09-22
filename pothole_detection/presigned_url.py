@@ -20,6 +20,8 @@ def upload_image_to_s3(presigned_url, file_path):
             print(f"Successfully uploaded {file_path} to S3.")
     except requests.RequestException as e:
         print(f"Failed to upload {file_path} to S3: {e}")
+        
+    return presigned_url
 
 # latitude와 longitude는 어떻게 처리해야될 지 고민
 

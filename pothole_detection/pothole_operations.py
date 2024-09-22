@@ -12,7 +12,7 @@ def get_pothole_data(api_url):
         return []
 
 
-def process_pothole_data(pothole_data, output_image_dir, post_api_url):
+def process_pothole_data(pothole_data, output_image_dir, post_api_url, update_valid_file_urls):
     
     valid_pothole_ids = []
     invalid_pothole_ids = []
@@ -29,23 +29,24 @@ def process_pothole_data(pothole_data, output_image_dir, post_api_url):
         # 이미지 파일 이름 추출
         image_file_name = os.path.basename(image_url)
         image_file_path = os.path.join(output_image_dir, image_file_name)
+        print(image_file_path)
         
         if os.path.isfile(image_file_path):
             # 이미지 파일이 존재할 경우 validPotholeIds에 ID 추가
             valid_pothole_ids.append(pothole.get("potholeId"))
-            print("valid")
         else:
             # 이미지 파일이 존재하지 않을 경우 invalidPotholeIds에 ID 추가
             invalid_pothole_ids.append(pothole.get("potholeId"))
-            print("invalid")
     
     # SecondVerificationRequestDTO에 해당하는 데이터 형식
     data_to_send = {
         "validPotholeIds": valid_pothole_ids,
-        "invalidPotholeIds": invalid_pothole_ids
+        "invalidPotholeIds": invalid_pothole_ids,
+        "potholeUrl": update_valid_file_urls
     }
     
     print(valid_pothole_ids)
+    print(update_valid_file_urls)
 
     # 데이터를 서버로 POST 요청 보내기
     response = requests.post(

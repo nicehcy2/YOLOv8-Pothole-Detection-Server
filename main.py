@@ -13,10 +13,12 @@ s3_edge_folder = 'pothole/'
 input_image_dir = './input_potholes/'
 output_image_dir = './output_potholes/'
 presigned_url_api = base_url + 'presigned-validate-url'
-#file_url_registration_api = base_url + 'register'
+# file_url_registration_api = base_url + 'register'
 
 pothole_data_api = base_url + 'images/unverified'
 post_api_url = base_url + 'potholes/second-verification'
+
+valid_file_urls = []
 
 # Download files from S3
 download_s3_files(bucket_name, s3_edge_folder, input_image_dir)
@@ -39,16 +41,21 @@ def process_images():
             print(f"Skipping file {file_path} due to URL fetching failure.")
             continue
 
-        upload_image_to_s3(presigned_url, file_path)
+        valid_file_urls.append(upload_image_to_s3(presigned_url, file_path))
 
 
 process_images()
 
+update_valid_file_urls = []
+for url in valid_file_urls:
+    update_valid_file_urls.append(url.split('?')[0])
+
 # Get pothole data and process it
 pothole_data = get_pothole_data(pothole_data_api)
-process_pothole_data(pothole_data, output_image_dir, post_api_url)
+process_pothole_data(pothole_data, output_image_dir,
+                     post_api_url, update_valid_file_urls)
 
 # Cleanup
-# delete_s3_files(bucket_name, s3_edge_folder, input_image_dir)
-# delete_local_files(input_image_dir)
-# delete_local_files(output_image_dir)
+delete_s3_files(bucket_name, s3_edge_folder, input_image_dir)
+delete_local_files(input_image_dir)
+delete_local_files(output_image_dir)
