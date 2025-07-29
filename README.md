@@ -1,2 +1,2 @@
-# YOLOv8-Flask-Server
+# 포트홀 2차 탐지 서버
 YOLOv8을 활용하여 객체를 탐지하는 2차 서버
