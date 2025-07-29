@@ -39,5 +39,13 @@ YOLOv8을 활용하여 포트홀 객체를 최종 탐지하는 2차 검증 서�
 </table><br/>
 
 ## 3. 기술 스택
+- Python3
+- YOLOv8l
+- AWS S3
+- PostgreSQL
+- Cron Job
 
 ## 4. 시스템 구성도
+<img width="674" height="633" alt="image" src="https://github.com/user-attachments/assets/4b11c7f9-265c-40ef-9b2d-d54777179bd4" />
+
+
