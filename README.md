@@ -15,11 +15,11 @@ YOLOv8을 활용하여 포트홀 객체를 최종 탐지하는 2차 검증 서�
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="https://github.com/user-attachments/assets/04d0162b-e65b-4f7d-ac27-0a848f8d09b7" width="100%"/><br/>
+      <img src="https://github.com/user-attachments/assets/04d0162b-e65b-4f7d-ac27-0a848f8d09b7" width="100%" height="280px"/><br/>
       <sub>나무를 포트홀로 오인식</sub>
     </td>
     <td align="center" width="50%">
-      <img src="https://github.com/user-attachments/assets/ceab962e-9359-4327-832a-dcb7b2386e1f" width="100%" height="280"/><br/>
+      <img src="https://github.com/user-attachments/assets/ceab962e-9359-4327-832a-dcb7b2386e1f" width="100%" height="280px"/><br/>
       <sub>프레임 저하로 인한 오인식</sub>
     </td>
   </tr>
