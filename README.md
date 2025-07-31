@@ -59,3 +59,8 @@ YOLOv8을 활용하여 포트홀 객체를 최종 탐지하는 2차 검증 서�
 - 작업 완료 후, 사용한 로컬 이미지 및 S3 버킷 내 처리된 원본 이미지를 정리하여 스토리지와 네트워크 자원을 효율적으로 관리합니다.
 - 탐지된 결과 이미지는 presigned URL을 통해 S3에 재업로드됩니다.
 - 탐지되지 않는 포토홀을 기록하여, 추후 배치 작업을 통해 자동으로 삭제 처리되도록 합니다.
+
+## 5. 🔗 Quick Jump
+- [프론트엔드 Repository](https://github.com/OpenRoot-KW/Pothole-Detection-Monitoring-Page)
+- [엣지 디바이스 Repository](https://github.com/nicehcy2/YOLOv5-Pothole-Detection-Edge-Device)
+- [백엔드 서버 Repository](https://github.com/nicehcy2/Pothole-Detection-API-Server)
